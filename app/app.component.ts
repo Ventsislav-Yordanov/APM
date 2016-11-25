@@ -4,7 +4,7 @@ import { Component } from "@angular/core";
     selector: "pm-app",
     template: `
     <div>
-        </h1>{{pageTitle}}<h1>
+        <h1>{{pageTitle}}</h1>
         <div>My first component</div>
     </div>
     `
