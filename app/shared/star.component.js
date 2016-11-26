@@ -11,17 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var StarComponent = (function () {
     function StarComponent() {
-        this.rating = 4; // hardcoded for now
     }
     StarComponent.prototype.ngOnChanges = function () {
         this.starWidth = this.rating * 86 / 5;
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Number)
+    ], StarComponent.prototype, "rating", void 0);
     StarComponent = __decorate([
         core_1.Component({
             selector: "ai-star",
             moduleId: module.id,
             templateUrl: "star.component.html",
-            styleUrls: ["star.component.html"]
+            styleUrls: ["star.component.css"]
         }), 
         __metadata('design:paramtypes', [])
     ], StarComponent);
