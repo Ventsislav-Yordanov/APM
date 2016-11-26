@@ -1,5 +1,5 @@
 <div class="panel panel-primary">
-    <div class="panel-heading"> 
+    <div class="panel-heading">
         {{pageTitle}}
     </div>
     <div class="panel-body">
@@ -31,7 +31,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <tr *ngFor="let product of products">
+                        <td></td>
+                        <td>{{ product.productName }}</td>
+                        <td>{{ product.productCode }}</td>
+                        <td>{{ product.releaseDate }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.starRating }}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
