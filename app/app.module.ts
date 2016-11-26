@@ -4,7 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { WelcomeComponent } from './home/welcome.component';
+
 import { ProductListComponent } from './products/product-list.component';
+import { ProductDetailsComponent } from './products/product-details.component';
 import { ProductFilterPipe } from './products/product-filter.pipe';
 import { StarComponent } from './shared/star.component';
 
@@ -16,7 +19,9 @@ import { StarComponent } from './shared/star.component';
   ],
   declarations: [
     AppComponent,
+    WelcomeComponent,
     ProductListComponent,
+    ProductDetailsComponent,
     ProductFilterPipe,
     StarComponent
   ],
