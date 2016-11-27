@@ -10,25 +10,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var product_service_1 = require("./product.service");
 var ProductDetailsComponent = (function () {
-    function ProductDetailsComponent(_route, _router) {
+    function ProductDetailsComponent(_route, _router, _productService) {
         this._route = _route;
         this._router = _router;
+        this._productService = _productService;
         this.pageTitle = "Product details";
     }
     ProductDetailsComponent.prototype.ngOnInit = function () {
-        var id = +this._route.snapshot.params["id"];
-        this.pageTitle += ": " + id;
+        var _this = this;
+        this.subscription = this._route.params.subscribe(function (params) {
+            var id = +params["id"];
+            _this.getProduct(id);
+        });
+    };
+    ProductDetailsComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
+    ProductDetailsComponent.prototype.getProduct = function (id) {
+        var _this = this;
+        this._productService.getProduct(id).subscribe(function (product) { return _this.product = product; }, function (error) { return _this.errorMessage = error; });
     };
     ProductDetailsComponent.prototype.onBack = function () {
         this._router.navigate(["/products"]);
+    };
+    ProductDetailsComponent.prototype.onRatingClicked = function (message) {
+        this.pageTitle = "Product details: " + message;
     };
     ProductDetailsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             templateUrl: "product-details.component.html"
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, product_service_1.ProductService])
     ], ProductDetailsComponent);
     return ProductDetailsComponent;
 }());
