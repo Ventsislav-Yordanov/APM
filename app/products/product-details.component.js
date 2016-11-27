@@ -9,16 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var ProductDetailsComponent = (function () {
-    function ProductDetailsComponent() {
+    function ProductDetailsComponent(_route) {
+        this._route = _route;
         this.pageTitle = "Product details";
     }
+    ProductDetailsComponent.prototype.ngOnInit = function () {
+        var id = +this._route.snapshot.params["id"];
+        this.pageTitle += ": " + id;
+    };
     ProductDetailsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             templateUrl: "product-details.component.html"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute])
     ], ProductDetailsComponent);
     return ProductDetailsComponent;
 }());

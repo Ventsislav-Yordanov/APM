@@ -30,7 +30,7 @@ var AppModule = (function () {
                 http_1.HttpModule,
                 router_1.RouterModule.forRoot([
                     { path: "products", component: product_list_component_1.ProductListComponent },
-                    { path: "products/id", component: product_details_component_1.ProductDetailsComponent },
+                    { path: "products/:id", component: product_details_component_1.ProductDetailsComponent },
                     { path: "welcome", component: welcome_component_1.WelcomeComponent },
                     { path: "", redirectTo: "welcome", pathMatch: "full" },
                     { path: "**", redirectTo: "welcome", pathMatch: "full" },
