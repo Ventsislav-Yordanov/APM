@@ -11,20 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var ProductDetailsComponent = (function () {
-    function ProductDetailsComponent(_route) {
+    function ProductDetailsComponent(_route, _router) {
         this._route = _route;
+        this._router = _router;
         this.pageTitle = "Product details";
     }
     ProductDetailsComponent.prototype.ngOnInit = function () {
         var id = +this._route.snapshot.params["id"];
         this.pageTitle += ": " + id;
     };
+    ProductDetailsComponent.prototype.onBack = function () {
+        this._router.navigate(["/products"]);
+    };
     ProductDetailsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             templateUrl: "product-details.component.html"
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router])
     ], ProductDetailsComponent);
     return ProductDetailsComponent;
 }());
