@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 
 import { ProductListComponent } from './products/product-list.component';
+import { ProductDetailsGuard } from './products/product-guard.service';
 import { ProductDetailsComponent } from './products/product-details.component';
 import { ProductFilterPipe } from './products/product-filter.pipe';
 import { StarComponent } from './shared/star.component';
@@ -19,7 +20,7 @@ import { StarComponent } from './shared/star.component';
     HttpModule,
     RouterModule.forRoot([
       { path: "products", component: ProductListComponent },
-      { path: "products/:id", component: ProductDetailsComponent },
+      { path: "products/:id", canActivate: [ProductDetailsGuard], component: ProductDetailsComponent },
       { path: "welcome", component: WelcomeComponent },
       { path: "", redirectTo: "welcome", pathMatch: "full" },
       { path: "**", redirectTo: "welcome", pathMatch: "full" },
@@ -33,6 +34,7 @@ import { StarComponent } from './shared/star.component';
     ProductFilterPipe,
     StarComponent
   ],
+  providers: [ProductDetailsGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
